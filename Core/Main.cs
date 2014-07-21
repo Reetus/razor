@@ -191,8 +191,9 @@ namespace Assistant
 
 			CheckUpdaterFiles();
 
-			if ( ClientCommunication.InitializeLibrary( Engine.Version ) == 0 || !File.Exists( Path.Combine( Config.GetInstallDirectory(), "Updater.exe" ) ) )
-				throw new InvalidOperationException( "This Razor installation is corrupted." );
+            ClientCommunication.InitializeLibrary( Engine.Version );
+            //if ( ClientCommunication.InitializeLibrary( Engine.Version ) == 0 || !File.Exists( Path.Combine( Config.GetInstallDirectory(), "Updater.exe" ) ) )
+            //    throw new InvalidOperationException( "This Razor installation is corrupted." );
 
 			DateTime lastCheck = DateTime.MinValue;
 			try { lastCheck = DateTime.FromFileTime( Convert.ToInt64( Config.GetRegString( Microsoft.Win32.Registry.CurrentUser, "UpdateCheck" ), 16 ) ); } catch { }
